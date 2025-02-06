@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 const TaskCard = (props) => {
-  const { todo } = props;
+  const { todo , setAssignedTask, assignedTask } = props;
 
   const [showTask, setShowTask] = useState(false);
 
@@ -10,11 +10,18 @@ const TaskCard = (props) => {
 
   const handleDeleteTask = () => {
     setShowTask(!showTask);
+    const index = assignedTask.indexOf(todo);
+    if (index > -1){
+      assignedTask.splice(index, 1);
+      setAssignedTask([...assignedTask]);
+    }
   };
 
   const handleStrikeThrough = () => {
     
     setLine(!line)
+
+  
 
 
   };

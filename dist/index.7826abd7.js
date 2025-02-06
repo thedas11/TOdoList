@@ -18650,14 +18650,17 @@ const TaskComponent = ()=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "text-center",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _taskHeaderDefault.default), {}, void 0, false, {
-                    fileName: "src/components/TaskComponent.js",
-                    lineNumber: 26,
-                    columnNumber: 9
-                }, undefined)
-            }, void 0, false, {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _taskHeaderDefault.default), {}, void 0, false, {
+                        fileName: "src/components/TaskComponent.js",
+                        lineNumber: 27,
+                        columnNumber: 9
+                    }, undefined),
+                    console.log(assignedTask)
+                ]
+            }, void 0, true, {
                 fileName: "src/components/TaskComponent.js",
-                lineNumber: 25,
+                lineNumber: 26,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -18673,7 +18676,7 @@ const TaskComponent = ()=>{
                         className: "w-[80%] rounded-md p-2 h-16"
                     }, void 0, false, {
                         fileName: "src/components/TaskComponent.js",
-                        lineNumber: 31,
+                        lineNumber: 33,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -18682,13 +18685,13 @@ const TaskComponent = ()=>{
                         children: "\u2795"
                     }, void 0, false, {
                         fileName: "src/components/TaskComponent.js",
-                        lineNumber: 40,
+                        lineNumber: 42,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/TaskComponent.js",
-                lineNumber: 30,
+                lineNumber: 32,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -18699,12 +18702,12 @@ const TaskComponent = ()=>{
                     children: "Delete all"
                 }, void 0, false, {
                     fileName: "src/components/TaskComponent.js",
-                    lineNumber: 46,
+                    lineNumber: 48,
                     columnNumber: 11
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/TaskComponent.js",
-                lineNumber: 45,
+                lineNumber: 47,
                 columnNumber: 7
             }, undefined),
             assignedTask && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -18712,15 +18715,17 @@ const TaskComponent = ()=>{
                     assignedTask?.map((task)=>{
                         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _taskCardDefault.default), {
-                                todo: task
+                                todo: task,
+                                setAssignedTask: setAssignedTask,
+                                assignedTask: assignedTask
                             }, void 0, false, {
                                 fileName: "src/components/TaskComponent.js",
-                                lineNumber: 54,
+                                lineNumber: 56,
                                 columnNumber: 17
                             }, undefined)
                         }, task, false, {
                             fileName: "src/components/TaskComponent.js",
-                            lineNumber: 53,
+                            lineNumber: 55,
                             columnNumber: 15
                         }, undefined);
                     }),
@@ -18732,19 +18737,19 @@ const TaskComponent = ()=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/TaskComponent.js",
-                        lineNumber: 58,
-                        columnNumber: 19
+                        lineNumber: 60,
+                        columnNumber: 10
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/TaskComponent.js",
-                lineNumber: 50,
+                lineNumber: 52,
                 columnNumber: 9
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/TaskComponent.js",
-        lineNumber: 24,
+        lineNumber: 25,
         columnNumber: 5
     }, undefined);
 };
@@ -18987,11 +18992,18 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _s = $RefreshSig$();
 const TaskCard = (props)=>{
     _s();
-    const { todo } = props;
+    const { todo, setAssignedTask, assignedTask } = props;
     const [showTask, setShowTask] = (0, _react.useState)(false);
     const [line, setLine] = (0, _react.useState)(true);
     const handleDeleteTask = ()=>{
         setShowTask(!showTask);
+        const index = assignedTask.indexOf(todo);
+        if (index > -1) {
+            assignedTask.splice(index, 1);
+            setAssignedTask([
+                ...assignedTask
+            ]);
+        }
     };
     const handleStrikeThrough = ()=>{
         setLine(!line);
@@ -19006,14 +19018,14 @@ const TaskCard = (props)=>{
                     children: todo
                 }, void 0, false, {
                     fileName: "src/components/TaskCard.js",
-                    lineNumber: 26,
+                    lineNumber: 33,
                     columnNumber: 18
                 }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                     className: "m-4 py-1 line-through",
                     children: todo
                 }, void 0, false, {
                     fileName: "src/components/TaskCard.js",
-                    lineNumber: 26,
+                    lineNumber: 33,
                     columnNumber: 57
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -19025,7 +19037,7 @@ const TaskCard = (props)=>{
                             children: "\u2705"
                         }, void 0, false, {
                             fileName: "src/components/TaskCard.js",
-                            lineNumber: 28,
+                            lineNumber: 35,
                             columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -19034,24 +19046,24 @@ const TaskCard = (props)=>{
                             children: "\u2718"
                         }, void 0, false, {
                             fileName: "src/components/TaskCard.js",
-                            lineNumber: 31,
+                            lineNumber: 38,
                             columnNumber: 13
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/TaskCard.js",
-                    lineNumber: 27,
+                    lineNumber: 34,
                     columnNumber: 11
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/TaskCard.js",
-            lineNumber: 25,
+            lineNumber: 32,
             columnNumber: 9
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/TaskCard.js",
-        lineNumber: 24,
+        lineNumber: 31,
         columnNumber: 7
     }, undefined);
 };

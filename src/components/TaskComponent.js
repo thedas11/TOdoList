@@ -21,11 +21,13 @@ const TaskComponent = () => {
 
   }
   return (
+    
     <div className="bg-gradient-to-r from-indigo-400 via-yellow-100 to-pink-100 w-1/2 rounded-md  ">
       <div className="text-center">
         <TaskHeader />
 
-        
+        {      console.log(assignedTask)
+        }
       </div>
       <div className="p-5 text-center">
         <input
@@ -51,11 +53,11 @@ const TaskComponent = () => {
           {assignedTask?.map((task) => {
             return (
               <div key={task}>
-                <TaskCard todo={task} />
+                <TaskCard todo={task} setAssignedTask={setAssignedTask} assignedTask={assignedTask}  />
               </div>
             );
           })}
-                  <div className="mb-2 mx-1">Total task: {assignedTask.length}</div>
+         <div className="mb-2 mx-1">Total task: {assignedTask.length}</div>
 
         </div>
       )}
